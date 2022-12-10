@@ -4,20 +4,20 @@
   --gray-300: #c4c4cc;
   --gray-400: #333333;
   --gray-500: #262626;
-  --gray-600: #1A1A1A;
-  --gray-700: #0D0D0D;
+  --gray-600: #1a1a1a;
+  --gray-700: #0d0d0d;
   --gray-800: #202024;
   --gray-900: #121214;
 
-  --green-300: #00B37E;
+  --green-300: #00b37e;
   --green-500: #00875f;
 
-  --red-500: #F75A68;
-  
-  --blue-500: #4EA8DE;
-  --blue-800: #1E6F9F;
+  --red-500: #f75a68;
 
-  --purple-700: #5E60CE;
+  --blue-500: #4ea8de;
+  --blue-800: #1e6f9f;
+
+  --purple-700: #5e60ce;
 }
 
 :focus {
@@ -37,7 +37,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body, input, textarea, button {
+body,
+input,
+textarea,
+button {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 1rem;

@@ -1,7 +1,7 @@
 :root {
   --white: #fff;
   --gray-100: #e1e1e6;
-  --gray-300: #c4c4cc;
+  --gray-300: #808080;
   --gray-400: #333333;
   --gray-500: #262626;
   --gray-600: #1a1a1a;
@@ -13,10 +13,11 @@
   --green-500: #00875f;
 
   --red-500: #f75a68;
-
+  
   --blue-500: #4ea8de;
   --blue-800: #1e6f9f;
 
+  --purple-500: #8284FA;
   --purple-700: #5e60ce;
 }
 

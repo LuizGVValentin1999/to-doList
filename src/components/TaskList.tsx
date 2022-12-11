@@ -1,5 +1,6 @@
-import { PlusCircle  } from 'phosphor-react';
+import { PlusCircle } from 'phosphor-react';
 import Clipboard from '../assets/Clipboard.svg'
+import { Task } from './Task';
 import styles from './TaskList.module.css';
 export function TaskList() {
   return (
@@ -30,13 +31,20 @@ export function TaskList() {
           </div>
         </div>
       </div>
-      <div className={styles.noTasksContainerBox}>
-            <div className={styles.noTasksContaine}>
-            <img src={Clipboard} alt="Clipboard" />
-              <p  className={styles.textNotTask}>Você ainda não tem tarefas cadastradas</p>
-              <p  className={styles.texteAddTask}>Crie tarefas e organize seus itens a fazer</p>
-            </div>
-          </div>
+      <div className={styles.TasksContainer}>
+        <div className={styles.tasksBox}>
+        <Task taskText="batata"  />
+        <Task taskText="Você ainda não tem tarefas cadastradas Crie tarefas e organize seus itens a fazer "  />
+        <Task taskText="Você ainda não tem tarefas cadastradas Crie tarefas e organize seus itens a fazer batata é bom meu irmão  "  />
+        <Task taskText="Você ainda não tem tarefas cadastradas Crie tarefas e organize seus itens a fazer "  />
+        </div>
+      
+        {/* <div className={styles.noTasksContaine}>
+          <img src={Clipboard} alt="Clipboard" />
+          <p className={styles.textNotTask}>Você ainda não tem tarefas cadastradas</p>
+          <p className={styles.texteAddTask}>Crie tarefas e organize seus itens a fazer</p>
+        </div> */}
+      </div>
     </main>
   )
 }

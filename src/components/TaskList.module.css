@@ -87,10 +87,15 @@
   border-radius: 1rem;
 }
 
-.noTasksContainerBox {
+.TasksContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.tasksBox{
+  max-width:  46.5rem;
 }
 
 

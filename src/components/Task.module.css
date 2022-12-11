@@ -1,0 +1,62 @@
+.tasks {
+    display: flex;
+    padding: 1rem;
+    background: var(--gray-500);
+    border: 1px solid var(--gray-400);
+    margin-top: 0.75rem;
+    border-radius: 8px;
+    color: var(--gray-100);
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.checkboxAndText {
+    display: flex;
+    gap: 1rem;
+}
+
+.tasks input[type="checkbox"] {
+    appearance: none;
+    width: 1.5rem; 
+    height: 1.5rem; 
+    border: 2px solid var(--blue-500);
+    border-radius: 16px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.tasks input[type=checkbox]:checked::before {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: -0.1875rem;
+    top: -0.125rem;
+    content: "\2713";
+    width: 1.5rem; 
+    height: 1.5rem;  
+    border-radius: 16px;
+    cursor: pointer;
+    color: var(--gray-100);
+    background: var(--purple-500);
+
+}
+
+
+.checkboxAndText .ischecked  {
+    color: #808080;
+    text-decoration: line-through;    
+}
+
+.tasks  button {
+    background: transparent;
+    border: 0;
+    color: var(--gray-300);
+    cursor: pointer;
+    line-height: 0;
+    border-radius: 2px;
+}
+  
+.tasks  button:hover {
+    color: var(--red-500);
+}

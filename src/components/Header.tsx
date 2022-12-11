@@ -4,7 +4,7 @@ export function Header(){
     return (
         <header className={styles.header}>
         <strong >
-          <img src={blueLogo} alt="Logotipo da blue" />
+          <img src={blueLogo} alt="Logotipo da todo" />
           <span className={styles.titleBlue} >to</span>
           <span className={styles.titlePurpleDark} >do</span>
         </strong>

@@ -2,15 +2,41 @@ import { PlusCircle } from 'phosphor-react';
 import Clipboard from '../assets/Clipboard.svg'
 import { Task } from './Task';
 import styles from './TaskList.module.css';
+import {ChangeEvent,  FormEvent,  useState } from "react";
 export function TaskList() {
+  const [tasks, setTasks] = useState(["tarefa 1"]);
+  
+  const [newTaskText, setNewTaskText] = useState("");
+
+  function crateNewTask(event: FormEvent) {
+    event.preventDefault();
+    if(newTaskText){
+      setTasks([...tasks, newTaskText]);
+      setNewTaskText("");
+    }
+  }
+
+  function newTaskChange(event: ChangeEvent<HTMLInputElement>) {
+    setNewTaskText(event.target.value);
+  }
+
+  function deleteTask(taskToDelete: string) {
+    const taskWithoutDeletedOne = tasks.filter((task) => {
+      return task !== taskToDelete;
+    });
+
+    setTasks(taskWithoutDeletedOne);
+  }
+
   return (
-    <main>
-      <form autoComplete='off' className={styles.taskForm}>
+    <div>
+      <form onSubmit={crateNewTask} autoComplete='off' className={styles.taskForm}>
         <input
           type="text"
           name="task"
           placeholder="Adicione uma nova tarefa"
-          required
+          onChange={newTaskChange}
+          value={newTaskText}
         />
         <footer>
           <button type="submit" >
@@ -32,19 +58,32 @@ export function TaskList() {
         </div>
       </div>
       <div className={styles.TasksContainer}>
-        <div className={styles.tasksBox}>
-        <Task taskText="batata"  />
-        <Task taskText="Você ainda não tem tarefas cadastradas Crie tarefas e organize seus itens a fazer "  />
-        <Task taskText="Você ainda não tem tarefas cadastradas Crie tarefas e organize seus itens a fazer batata é bom meu irmão  "  />
-        <Task taskText="Você ainda não tem tarefas cadastradas Crie tarefas e organize seus itens a fazer "  />
-        </div>
+       
+          {
+            tasks.length > 0 ? (
+              tasks.map((task) => {
+                return (
+                <Task 
+                  key={task}
+                  taskText={task} 
+                  onDeleteTask={deleteTask}
+                 />
+                )
+              })
+            ) 
+            : (
+              <div className={styles.noTasksContaine}>
+              <img src={Clipboard} alt="Clipboard" />
+              <p className={styles.textNotTask}>Você ainda não tem tarefas cadastradas</p>
+              <p className={styles.texteAddTask}>Crie tarefas e organize seus itens a fazer</p>
+            </div>
+            )
+
+          }
+     
       
-        {/* <div className={styles.noTasksContaine}>
-          <img src={Clipboard} alt="Clipboard" />
-          <p className={styles.textNotTask}>Você ainda não tem tarefas cadastradas</p>
-          <p className={styles.texteAddTask}>Crie tarefas e organize seus itens a fazer</p>
-        </div> */}
+       
       </div>
-    </main>
+    </div>
   )
 }

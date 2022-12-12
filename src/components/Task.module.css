@@ -1,4 +1,6 @@
 .tasks {
+    max-width:  46.5rem;
+    width: 100%; 
     display: flex;
     padding: 1rem;
     background: var(--gray-500);
@@ -43,8 +45,8 @@
 }
 
 
-.checkboxAndText .ischecked  {
-    color: #808080;
+.checkboxAndText .isCompleted  {
+    color: var(--gray-300);
     text-decoration: line-through;    
 }
 

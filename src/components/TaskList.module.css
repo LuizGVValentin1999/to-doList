@@ -105,7 +105,7 @@
   border-top: 1px solid var(--gray-400);
   border-radius: 8px;
   margin-top: 1.5rem;
-  padding: 4rem;
+  padding-top: 4rem;
 }
 
 .noTasksContaine .textNotTask {

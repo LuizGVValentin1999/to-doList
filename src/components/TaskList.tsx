@@ -45,9 +45,14 @@ export function TaskList() {
       return task.text !== taskToDelete;
     });
     
+    tasks.map(task => {
+      if (task.id === taskToDelete && task.isCompleted === true) {
+        IsCompletedTask(taskToDelete)
+      }
+    })
+    
     setTasks(taskWithoutDeletedOne);
     setAmountTasks(taskWithoutDeletedOne.length);
-    countCompletedTasks();
   }
 
   function countCompletedTasks(){
@@ -60,9 +65,9 @@ export function TaskList() {
     setAmountCompletedTasks(count)
   }
 
-  function IsCompletedTask(taskToDelete: string) {
+  function IsCompletedTask(taskToComplet: string) {
     tasks.map(task => {
-      if (task.text === taskToDelete) {
+      if (task.text === taskToComplet) {
         task.isCompleted = !task.isCompleted
       }
     })

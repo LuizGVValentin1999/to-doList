@@ -6,8 +6,9 @@ import { useState } from "react";
 interface TaskProps {
     taskText: string;
     onDeleteTask: (taskText: string) => void;
+    onIsCompletedTask: (taskText: string) => void;
 }
-export function Task({ taskText,onDeleteTask }: TaskProps) {
+export function Task({ taskText,onDeleteTask,onIsCompletedTask }: TaskProps) {
 
     const [isCompleted, setisCompleted] = useState(false);
 
@@ -17,6 +18,7 @@ export function Task({ taskText,onDeleteTask }: TaskProps) {
     
     function taskComplete() {
         setisCompleted(!isCompleted);
+        onIsCompletedTask(taskText);
     }
    
     return (

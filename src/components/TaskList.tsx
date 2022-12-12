@@ -3,16 +3,35 @@ import Clipboard from '../assets/Clipboard.svg'
 import { Task } from './Task';
 import styles from './TaskList.module.css';
 import {ChangeEvent,  FormEvent,  useState } from "react";
+
+
+interface TaskProps {
+  id: string;
+  text: string;
+  isCompleted: boolean;
+}
+
 export function TaskList() {
-  const [tasks, setTasks] = useState(["tarefa 1"]);
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
   
   const [newTaskText, setNewTaskText] = useState("");
+  const [amountTasks, setAmountTasks] = useState(0);
+  const [amountCompletedTasks, setAmountCompletedTasks] = useState(0);
 
   function crateNewTask(event: FormEvent) {
     event.preventDefault();
     if(newTaskText){
-      setTasks([...tasks, newTaskText]);
+      const newTask =
+      {
+        id: newTaskText,
+        text: newTaskText,
+        isCompleted: false
+      };
+      setTasks([...tasks, newTask]);
       setNewTaskText("");
+      setAmountTasks((state) => {
+        return state + 1;
+      });
     }
   }
 
@@ -21,11 +40,33 @@ export function TaskList() {
   }
 
   function deleteTask(taskToDelete: string) {
+   
     const taskWithoutDeletedOne = tasks.filter((task) => {
-      return task !== taskToDelete;
+      return task.text !== taskToDelete;
     });
-
+    
     setTasks(taskWithoutDeletedOne);
+    setAmountTasks(taskWithoutDeletedOne.length);
+    countCompletedTasks();
+  }
+
+  function countCompletedTasks(){
+    let count = 0;
+    tasks.filter(task => {
+      if (task.isCompleted === true) {
+        count++;
+      }
+    })
+    setAmountCompletedTasks(count)
+  }
+
+  function IsCompletedTask(taskToDelete: string) {
+    tasks.map(task => {
+      if (task.text === taskToDelete) {
+        task.isCompleted = !task.isCompleted
+      }
+    })
+    countCompletedTasks();
   }
 
   return (
@@ -49,11 +90,11 @@ export function TaskList() {
         <div className={styles.overview}>
           <div className={styles.counterTask}>
             <p>Tarefas criadas</p>
-            <span>0</span>
+            <span>{amountTasks}</span>
           </div>
           <div className={styles.counterTaskComplt}>
             <p>Concluídas</p>
-            <span>0</span>
+            <span>{amountCompletedTasks} de {amountTasks}</span>
           </div>
         </div>
       </div>
@@ -64,9 +105,10 @@ export function TaskList() {
               tasks.map((task) => {
                 return (
                 <Task 
-                  key={task}
-                  taskText={task} 
+                  key={task.text}
+                  taskText={task.text} 
                   onDeleteTask={deleteTask}
+                  onIsCompletedTask={IsCompletedTask}
                  />
                 )
               })

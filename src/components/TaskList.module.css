@@ -96,7 +96,8 @@
 
 
 .noTasksContaine {
-  width:  46.5rem;
+  width: 100%;
+  max-width:  46.5rem;
   display: flex;
   flex-direction: column;
   justify-contet: center;

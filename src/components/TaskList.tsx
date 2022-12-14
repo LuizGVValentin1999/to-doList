@@ -1,8 +1,9 @@
-import { PlusCircle } from 'phosphor-react';
+import { PlusCircle,ShareNetwork } from 'phosphor-react';
 import Clipboard from '../assets/Clipboard.svg'
 import { Task } from './Task';
 import styles from './TaskList.module.css';
 import {ChangeEvent,  FormEvent,  useState } from "react";
+import {  toast } from 'react-toastify';
 
 
 interface TaskProps {
@@ -74,6 +75,12 @@ export function TaskList() {
     countCompletedTasks();
   }
 
+  async function shareTaskList(){
+
+    await navigator.clipboard.writeText('Ainda Não funciona');
+     toast("Ainda Não funciona!");
+  }
+
   return (
     <div>
       <form onSubmit={crateNewTask} autoComplete='off' className={styles.taskForm}>
@@ -131,6 +138,9 @@ export function TaskList() {
       
        
       </div>
+      <a  onClick={shareTaskList}className={styles.shareButton} >
+        <ShareNetwork  />
+      </a>
     </div>
   )
 }

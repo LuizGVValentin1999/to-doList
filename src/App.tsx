@@ -10,7 +10,6 @@ function App() {
 
       <div className={styles.wrapper}>
         <TaskList />
-        <main></main>
       </div>
     </div>
   );

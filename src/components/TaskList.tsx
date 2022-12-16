@@ -13,6 +13,8 @@ interface TaskProps {
 }
 
 export function TaskList() {
+  let keyListTask = window.location.pathname;
+  console.log(keyListTask)
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   
   const [newTaskText, setNewTaskText] = useState("");
